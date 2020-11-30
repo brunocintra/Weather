@@ -17,7 +17,7 @@ interface OpenWeatherService {
     @GET("find")
     fun findTemperature(
         @Query("q") cityName: String,
-        @Query("units") units: String,
+        @Query("units") units: String = "metrics",
         @Query("APPID") appId: String = "3ea94db66951adbe3fd407dfd2066c41"
     ): Call<Root>
 

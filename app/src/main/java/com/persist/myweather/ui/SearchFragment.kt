@@ -15,7 +15,10 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.persist.myweather.R
 import com.persist.myweather.adapter.SearchAdapter
+import com.persist.myweather.database.WeatherDatabase
 import com.persist.myweather.manager.OpenWeatherManager
+import com.persist.myweather.model.City
+import com.persist.myweather.model.CityDatabase
 import com.persist.myweather.model.Element
 import com.persist.myweather.model.Root
 
@@ -39,6 +42,41 @@ class SearchFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         btn_search.setOnClickListener(this)
         recyclerView.adapter = SearchAdapter(mutableListOf())
+
+        floatingActionButton.setOnClickListener {
+            val city = edit_search.text.toString()
+            val service = OpenWeatherManager().getOpenWeatherService()
+            val call = service.getCityWeather(city)
+            
+            call.enqueue(object : Callback<City> {
+                override fun onResponse(call: Call<City>, response: Response<City>) {
+                    when (response.isSuccessful) {
+                        true -> {
+                            val city = response.body()
+
+                            if (context != null){
+                                val db = WeatherDatabase.getInstance(context!!)
+
+                                val cityDatabase = CityDatabase(city!!.id, city!!.name)
+                                val result = db?.cityDatabaseDao()?.save(cityDatabase)
+
+                                Toast.makeText(context, getString(R.string.toast_save_favorite), Toast.LENGTH_SHORT).show()
+                            }
+
+
+                        }
+                        false -> {
+
+                            Log.e("BCC", "Response is not success")
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<City>, t: Throwable) {
+                    Log.e("BCC", "There is an error: ${t.message}")
+                }
+            })
+        }
     }
 
     override fun onClick(view: View?) {
@@ -48,7 +86,7 @@ class SearchFragment : Fragment(), View.OnClickListener {
 
                 val city = edit_search.text.toString()
                 val serviceWeather = OpenWeatherManager().getOpenWeatherService()
-                val call = serviceWeather.findTemperature(city, "")
+                val call = serviceWeather.findTemperature(city)
 
                 call.enqueue(object : Callback<Root> {
                     override fun onResponse(call: Call<Root>, response: Response<Root>) {

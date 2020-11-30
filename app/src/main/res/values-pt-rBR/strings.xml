@@ -13,4 +13,5 @@
     <string name="search_button">Pesquisar</string>
     <string name="toast_online">You are online</string>
     <string name="toast_offline">You are offline</string>
+    <string name="toast_save_favorite">Salvo com sucesso</string>
 </resources>

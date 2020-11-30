@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_search_recyclerview_item.view.*
 class SearchAdapter(val list: MutableList<Element>?): RecyclerView.Adapter<SearchAdapter.MyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchAdapter.MyViewHolder {
         return MyViewHolder(LayoutInflater.from(parent.context)
-            .inflate(R.layout.fragment_search_recyclerview_item, parent, false)    )
+            .inflate(R.layout.fragment_search_recyclerview_item, parent, false))
     }
 
     override fun onBindViewHolder(holder: SearchAdapter.MyViewHolder, position: Int) {
