@@ -56,14 +56,10 @@ class SearchFragment : Fragment(), View.OnClickListener {
 
                             if (context != null){
                                 val db = WeatherDatabase.getInstance(context!!)
-
                                 val cityDatabase = CityDatabase(city!!.id, city!!.name)
-                                val result = db?.cityDatabaseDao()?.save(cityDatabase)
-
+                                db?.cityDatabaseDao()?.save(cityDatabase)
                                 Toast.makeText(context, getString(R.string.toast_save_favorite), Toast.LENGTH_SHORT).show()
                             }
-
-
                         }
                         false -> {
 
