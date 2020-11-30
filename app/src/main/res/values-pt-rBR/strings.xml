@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Meu Tempo</string>
+    <string name="title_search">Pesquisar</string>
+    <string name="title_favorites">Favoritos</string>
+    <string name="title_settings">Configuração</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_temperature_unit">Temperature Unit</string>
+    <string name="title_language">Descrição da Linguagem</string>
+    <string name="btn_save">Save</string>
+    <string name="search_hint">Nome da cidade</string>
+    <string name="search_button">Pesquisar</string>
+    <string name="toast_online">You are online</string>
+    <string name="toast_offline">You are offline</string>
+</resources>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">My Weather</string>
+    <string name="title_search">Search</string>
+    <string name="title_favorites">Favorites</string>
+    <string name="title_settings">Settings</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_temperature_unit">Temperature Unit</string>
+    <string name="title_language">Description Language</string>
+    <string name="btn_save">Save</string>
+    <string name="search_hint">Name of the city</string>
+    <string name="search_button">Search</string>
+    <string name="toast_online">You are online</string>
+    <string name="toast_offline">You are offline</string>
+</resources>
